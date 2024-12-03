@@ -1,0 +1,11 @@
+privilegeTargets:
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'Ujamii.Cobot:ImageController':
+      matcher: 'method(Ujamii\Cobot\Controller\ImageController->uploadAction())'
+
+roles:
+  'Neos.Flow:Everybody':
+    privileges:
+      - privilegeTarget: 'Ujamii.Cobot:ImageController'
+        permission: GRANT
+

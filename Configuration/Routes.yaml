@@ -1,0 +1,7 @@
+-
+  name: Image
+  uriPattern: api/image
+  defaults:
+    '@package': 'Ujamii.Cobot'
+    '@controller': 'Image'
+    '@action': 'upload'

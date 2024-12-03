@@ -1,0 +1,34 @@
+Ujamii:
+  Cobot:
+    services:
+      baseUri: https://cobot.ujamii.com
+      apiKey: null
+      routes:
+        chatGPT:
+          path: /api/v1/chatgpt/completion
+        dallE:
+          path: /api/v1/dall-e/generate
+          dev: false
+        flux:
+          path: /api/v1/flux/generate
+    ImageEditorExtension:
+      enabled: true
+
+Neos:
+  Neos:
+    Ui:
+      resources:
+        javascript:
+          'Ujamii.Cobot:ContentGeneration':
+            resource: resource://Ujamii.Cobot/Public/ContentGeneration/Plugin.js
+        stylesheets:
+          'Ujamii.Cobot:ContentGeneration':
+            resource: resource://Ujamii.Cobot/Public/ContentGeneration/Plugin.css
+      frontendConfiguration:
+        'Ujamii.Cobot.ImageEditorExtension.isEnabled': '${Configuration.setting(''Ujamii.Cobot.ImageEditorExtension.enabled'')}'
+        'Ujamii.Cobot.services': '${Configuration.setting(''Ujamii.Cobot.services'')}'
+  Flow:
+    mvc:
+      routes:
+        'Ujamii.Cobot':
+          position: 'start'
