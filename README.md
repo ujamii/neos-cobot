@@ -24,3 +24,30 @@ Ujamii:
       # You can get it from your Cobot account settings
       apiKey: <your-api-key>
 ```
+
+## Usage
+
+### Text Generation
+To enable **Cobot Text Generation** functionality within your node, add the following configuration to your YAML file.
+This will display the Cobot inline editing options directly in the **RichTextToolbar**, allowing for AI-powered content generation within text fields.
+
+```yaml
+Neos.NodeTypes:Text:
+    properties:
+      text:
+        ui:
+          inline:
+            formatting:
+              cobot: true
+```
+
+### Image Generation
+
+The **Cobot Image Generation** feature is enabled by default, displaying the ImageGeneration button in **all image editors**.
+If you prefer to disable this feature, you can add the following configuration to your YAML file and set enabled to false.
+```yaml
+Ujamii:
+  Cobot:
+    ImageEditorExtension:
+      enabled: true
+```
