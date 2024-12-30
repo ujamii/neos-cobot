@@ -5,12 +5,12 @@ Ujamii:
       apiKey: null
       routes:
         chatGPT:
-          path: /api/v1/chatgpt/completion
+          path: /api/v1/text/openai
         dallE:
-          path: /api/v1/dall-e/generate
+          path: /api/v1/image/openai
           dev: false
         flux:
-          path: /api/v1/flux/generate
+          path: /api/v1/image/flux
     ImageEditorExtension:
       enabled: true
 
