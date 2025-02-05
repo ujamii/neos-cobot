@@ -174,6 +174,22 @@
   list-style: none;
 }
 
+.styles__selectBox__container___22kr4 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.styles__selectBox__group___3UGYL {
+  display: flex;
+  flex-direction: column;
+}
+
+.styles__selectBox__group___3UGYL p {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
 .styles__selectBox___33fXL {
   width: 100%;
   position: relative;
@@ -254,6 +270,10 @@
 .styles__selectBox--disabled___1NYWU {
   filter: opacity(50%);
   cursor: not-allowed;
+}
+
+.styles__checkBox__group___jZ5FS {
+  display: flex;
 }
 
 .styles__dropDown___1c112 {

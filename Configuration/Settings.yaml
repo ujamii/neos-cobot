@@ -11,6 +11,8 @@ Ujamii:
           dev: false
         flux:
           path: /api/v1/image/flux
+        ideogram:
+          path: /api/v1/image/ideogram
     ImageEditorExtension:
       enabled: true
 
