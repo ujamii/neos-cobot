@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+       xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="" product-name="Ujamii.Cobot" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="sidebar.all" xml:space="preserve">
+        <source>All</source>
+      </trans-unit>
+      <trans-unit id="sidebar.altText.withAltText" xml:space="preserve">
+        <source>With Alt Text</source>
+      </trans-unit>
+      <trans-unit id="sidebar.altText.withoutAltText" xml:space="preserve">
+        <source>Without Alt Text</source>
+      </trans-unit>
+      <trans-unit id="sidebar.assetCollection.withoutAssetCollection" xml:space="preserve">
+        <source>Without Asset Collection</source>
+      </trans-unit>
+      <trans-unit id="sidebar.tag.withoutTag" xml:space="preserve">
+        <source>Without Tag</source>
+      </trans-unit>
+      <trans-unit id="imageList.noAltText" xml:space="preserve">
+        <source>No Alt Text</source>
+      </trans-unit>
+      <trans-unit id="imageList.noAltTextButImageInUseWarningMessage" xml:space="preserve">
+        <source>Image is in use but has no alt text</source>
+      </trans-unit>
+      <trans-unit id="imageList.generateButtonText" xml:space="preserve">
+        <source>Generate alt text</source>
+      </trans-unit>
+      <trans-unit id="imageList.saveButtonText" xml:space="preserve">
+        <source>Save</source>
+      </trans-unit>
+      <trans-unit id="pagination.previous" xml:space="preserve">
+        <source>Previous</source>
+      </trans-unit>
+      <trans-unit id="pagination.next" xml:space="preserve">
+        <source>Next</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

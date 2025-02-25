@@ -1,0 +1,12 @@
+prototype(Ujamii.Cobot:Component.ImageList) < prototype(Neos.Fusion:Component) {
+
+  images = ${[]}
+
+  renderer = afx`
+    <ul class="asset-list">
+      <Neos.Fusion:Loop items={props.images} itemName="image">
+        <Ujamii.Cobot:Component.ImageList.Item image={image}/>
+      </Neos.Fusion:Loop>
+    </ul>
+  `
+}

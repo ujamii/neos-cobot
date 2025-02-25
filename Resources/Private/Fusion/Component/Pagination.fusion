@@ -1,0 +1,50 @@
+prototype(Ujamii.Cobot:Component.Pagination) < prototype(Neos.Fusion:Component) {
+
+  pagination = Neos.Fusion:DataStructure
+
+  renderer = afx`
+    <nav class="page-navigation" @if={q(props.pagination.pages).count() > 1}>
+      <ul class="typo3-widget-paginator neos-widget-paginator">
+        <li @if={props.pagination.hasPreviousPage}>
+          <Neos.Fusion:Link.Action href.action="index"
+                                   href.arguments={{page: props.pagination.previousPage}}>
+            {I18n.translate('Ujamii.Cobot:Main:pagination.previous')}
+          </Neos.Fusion:Link.Action>
+        </li>
+        <li>
+          <Neos.Fusion:Link.Action href.action="index"
+                                   href.arguments={{page: 1}}
+                                   @if={props.pagination.currentPage > 5}>
+            1
+          </Neos.Fusion:Link.Action>
+        </li>
+        <li @if={props.pagination.hasLessPages}>
+          ...
+        </li>
+        <Neos.Fusion:Loop items={props.pagination.pages} itemName="page">
+          <li class={props.pagination.currentPage == page ? 'current' : null}>
+            <Neos.Fusion:Link.Action href.action="index"
+                                     href.arguments={Array.concat({page: page}, filter)}>
+              {page}
+            </Neos.Fusion:Link.Action>
+          </li>
+        </Neos.Fusion:Loop>
+        <li @if={props.pagination.hasMorePages}>
+          ...
+        </li>
+        <li @if={props.pagination.totalPages > 5 && props.pagination.currentPage < props.pagination.totalPages - 5}>
+          <Neos.Fusion:Link.Action href.action="index"
+                                   href.arguments={{page: props.pagination.totalPages - 1}}>
+            {props.pagination.totalPages - 1}
+          </Neos.Fusion:Link.Action>
+        </li>
+        <li @if={props.pagination.hasNextPage}>
+          <Neos.Fusion:Link.Action href.action="index"
+                                   href.arguments={{page: props.pagination.nextPage}}>
+            {I18n.translate('Ujamii.Cobot:Main:pagination.next')}
+          </Neos.Fusion:Link.Action>
+        </li>
+      </ul>
+    </nav>
+  `
+}

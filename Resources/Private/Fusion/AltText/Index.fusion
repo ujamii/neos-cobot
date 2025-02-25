@@ -1,0 +1,21 @@
+prototype(Ujamii.Cobot:AltTextBackendController.Index) < prototype(Neos.Fusion:Component) {
+
+  images = ${[]}
+  filter = Neos.Fusion:DataStructure
+  assetCollections = ${[]}
+  tags = ${[]}
+  pagination = Neos.Fusion:DataStructure
+
+  renderer = afx`
+      <link rel="stylesheet" href={StaticResource.uri('Ujamii.Cobot', 'Public/Fusion/style.css')}/>
+      <script src={StaticResource.uri('Ujamii.Cobot', 'Public/Fusion/index.js')} defer></script>
+      <h2 style="margin-bottom: 64px;">Alt Text</h2>
+      <div class="wrapper">
+        <Ujamii.Cobot:Component.Sidebar filter={filter} assetCollections={assetCollections} tags={tags}/>
+          <div class="content">
+              <Ujamii.Cobot:Component.ImageList images={images}/>
+              <Ujamii.Cobot:Component.Pagination pagination={pagination}/>
+          </div>
+      </div>
+  `
+}

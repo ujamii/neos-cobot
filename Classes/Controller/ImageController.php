@@ -28,10 +28,10 @@ class ImageController extends ActionController
         private readonly ImageRepository $imageRepository,
         private readonly ResourceManager $resourceManager,
         private readonly AssetCollectionRepository $assetCollectionRepository,
-    ) {}
+    ) {
+    }
 
     /**
-     * @return void
      * @throws \Exception
      */
     public function uploadAction(): void
@@ -45,7 +45,7 @@ class ImageController extends ActionController
 
             $this->view->assign('value', ['image' => $image->getIdentifier()]);
 
-            $this->logger->info(__CLASS__ . '::' . __FUNCTION__ . ': ' . $imageUri);
+            $this->logger->info(__CLASS__.'::'.__FUNCTION__.': '.$imageUri);
         });
     }
 

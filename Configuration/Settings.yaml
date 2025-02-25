@@ -4,6 +4,8 @@ Ujamii:
       baseUri: https://cobot.ujamii.com
       apiKey: null
       routes:
+        altText:
+          path: /api/v1/alt-text/openai
         chatGPT:
           path: /api/v1/text/openai
         dallE:
@@ -29,7 +31,26 @@ Neos:
       frontendConfiguration:
         'Ujamii.Cobot.ImageEditorExtension.isEnabled': '${Configuration.setting(''Ujamii.Cobot.ImageEditorExtension.enabled'')}'
         'Ujamii.Cobot.services': '${Configuration.setting(''Ujamii.Cobot.services'')}'
+    modules:
+      management:
+        submodules:
+          altTextModule:
+            label: 'Alt Text'
+            description: 'Generate alt text for images'
+            icon: 'magic'
+            controller: 'Ujamii\Cobot\Controller\AltTextBackendController'
+  Fusion:
+    defaultContext:
+      'ImageExtension': 'Ujamii\Cobot\Eel\ImageExtensionHelper'
+      'EnumHelper': 'Ujamii\Cobot\Eel\EnumHelper'
   Flow:
+    persistence:
+      doctrine:
+        eventListeners:
+          Ujamii\Cobot\EventListener\MediaRemoveListener:
+            events:
+              - preRemove
+            listener: Ujamii\Cobot\EventListener\MediaRemoveListener
     mvc:
       routes:
         'Ujamii.Cobot':

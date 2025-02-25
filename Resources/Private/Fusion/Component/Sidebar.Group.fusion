@@ -1,0 +1,12 @@
+prototype(Ujamii.Cobot:Component.Sidebar.Group) < prototype(Neos.Fusion:Component) {
+
+  headline = ''
+  content = ''
+
+  renderer = afx`
+    <div class="sidebar-group">
+      <h3>{props.headline}</h3>
+        {props.content}
+    </div>
+  `
+}

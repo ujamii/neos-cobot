@@ -1,0 +1,94 @@
+prototype(Ujamii.Cobot:Component.Sidebar) < prototype(Neos.Fusion:Component) {
+
+  filter = Neos.Fusion:DataStructure
+  assetCollections = ${[]}
+  tags = ${[]}
+
+  renderer = afx`
+      <div class="sidebar">
+          <Ujamii.Cobot:Component.Sidebar.Group headline="Alt Text">
+            <ul>
+                <li>
+                  <Neos.Fusion:Link.Action href.action="index"
+                                           href.arguments.altTextFilter="all"
+                                           renderer.attributes.class={filter.altTextFilter == 'all' ? 'active' : ''}>
+                    {I18n.translate('Ujamii.Cobot:Main:sidebar.all')}
+                  </Neos.Fusion:Link.Action>
+                </li>
+              <li>
+                <Neos.Fusion:Link.Action href.action="index"
+                                         href.arguments.altTextFilter="altText"
+                                         renderer.attributes.class={filter.altTextFilter == 'altText' ? 'active' : ''}>
+                  {I18n.translate('Ujamii.Cobot:Main:sidebar.altText.withAltText')}
+                </Neos.Fusion:Link.Action>
+              </li>
+              <li>
+                <Neos.Fusion:Link.Action href.action="index"
+                                         href.arguments.altTextFilter="withoutAltText"
+                                         renderer.attributes.class={filter.altTextFilter == 'withoutAltText' ? 'active' : ''}>
+                  {I18n.translate('Ujamii.Cobot:Main:sidebar.altText.withoutAltText')}
+                </Neos.Fusion:Link.Action>
+              </li>
+            </ul>
+
+          </Ujamii.Cobot:Component.Sidebar.Group>
+
+        <Ujamii.Cobot:Component.Sidebar.Group headline="Asset Collections">
+          <ul>
+            <li>
+              <Neos.Fusion:Link.Action href.action="index"
+                                       href.arguments.assetCollectionFilter="all"
+                                       renderer.attributes.class={filter.assetCollectionFilter == 'all' ? 'active' : ''}>
+                {I18n.translate('Ujamii.Cobot:Main:sidebar.all')}
+                </Neos.Fusion:Link.Action>
+            </li>
+            <li>
+                <Neos.Fusion:Link.Action href.action="index"
+                                         href.arguments.assetCollectionFilter="without"
+                                         renderer.attributes.class={filter.assetCollectionFilter == 'without' ? 'active' : ''}>
+                  {I18n.translate('Ujamii.Cobot:Main:sidebar.assetCollection.withoutAssetCollection')}
+                    </Neos.Fusion:Link.Action>
+            </li>
+              <Neos.Fusion:Loop items={props.assetCollections} itemName="assetCollection">
+                <li>
+                  <Neos.Fusion:Link.Action href.action="index"
+                                           href.arguments.assetCollectionFilter="selected"
+                                           href.arguments.assetCollection={assetCollection}
+                                           renderer.attributes.class={filter.assetCollectionFilter == 'selected' && props.filter.assetColletion == assetCollection ? 'active' : ''}>
+                    {assetCollection.title}
+                  </Neos.Fusion:Link.Action>
+                </li>
+              </Neos.Fusion:Loop>
+          </ul>
+        </Ujamii.Cobot:Component.Sidebar.Group>
+        <Ujamii.Cobot:Component.Sidebar.Group headline="Tags">
+            <ul>
+                <li>
+                <Neos.Fusion:Link.Action href.action="index"
+                                         href.arguments.tagFilter="all"
+                                         renderer.attributes.class={filter.tagFilter == 'all' ? 'active' : ''}>
+                    {I18n.translate('Ujamii.Cobot:Main:sidebar.all')}
+                    </Neos.Fusion:Link.Action>
+                </li>
+              <li>
+                <Neos.Fusion:Link.Action href.action="index"
+                                         href.arguments.tagFilter="without"
+                                         renderer.attributes.class={filter.tagFilter == 'without' ? 'active' : ''}>
+                  {I18n.translate('Ujamii.Cobot:Main:sidebar.tag.withoutTag')}
+                    </Neos.Fusion:Link.Action>
+              </li>
+                <Neos.Fusion:Loop items={props.tags} itemName="tag">
+                <li>
+                    <Neos.Fusion:Link.Action href.action="index"
+                                             href.arguments.tagFilter="selected"
+                                             href.arguments.tag={tag}
+                                             renderer.attributes.class={filter.tagFilter == 'selected' && props.filter.tag == tag ? 'active' : ''}>
+                    {tag.label}
+                    </Neos.Fusion:Link.Action>
+                </li>
+                </Neos.Fusion:Loop>
+            </ul>
+        </Ujamii.Cobot:Component.Sidebar.Group>
+      </div>
+  `
+}

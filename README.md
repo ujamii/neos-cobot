@@ -10,6 +10,10 @@ To install the package, you can use composer. Run the following command in your 
 ```bash
 composer require ujamii/neos-cobot
 ```
+After the installation, you need to run the following command to update your database schema:
+```bash
+./flow doctrine:update
+```
 
 # Configuration
 
@@ -51,4 +55,29 @@ Ujamii:
   Cobot:
     ImageEditorExtension:
       enabled: true
+```
+
+## Alternative Text Generation
+
+If you create alt texts in the backend, these are saved in an extra entity.
+To use these alt texts and bring them to the frontend, you must implement an eel helper
+for this. Here is an example of how you can do this:
+
+```
+<Neos.Neos:ImageTag asset={asset} attributes.alt={ImageExtension.getAltText(asset)} />
+```
+
+The method ``ImageExtension.getAltText`` is an eel helper that accepts an ``ImageInterface`` and returns the alt text.
+
+**Disable the alt text generation**<br/>
+If you not want to use the alt text generation, you can disable it in the settings:
+
+```yaml
+Neos:
+  Neos:
+    modules:
+      management:
+          submodules:
+              altTextModule:
+                enabled: false
 ```

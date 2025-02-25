@@ -1,0 +1,53 @@
+prototype(Ujamii.Cobot:Component.ImageList.Item) < prototype(Neos.Fusion:Component) {
+
+  image = null
+
+  renderer = afx`
+    <li class="asset-list-item">
+      <div class="asset-image-container">
+        <Neos.Neos:ImageTag asset={props.image} width={800}/>
+      </div>
+
+      <Neos.Fusion.Form:Form form.target.action="change"
+                             form.target.arguments={{image: props.image}}>
+        <div class="asset-alt-text-container">
+          <div class="asset-alt-text-container-alttext">
+            <Neos.Fusion.Form:Textarea field.name="altText"
+                                       content={ImageExtension.getAltText(props.image)}
+                                       attributes.class="edit-alt-text hidden"
+                                       attributes.data-previous-text={ImageExtension.getAltText(props.image)}/>
+            <span class="alt-text">
+                      {ImageExtension.getAltText(props.image)}
+              <span @if={!ImageExtension.getAltText(props.image)}>
+                        <i>{I18n.translate('Ujamii.Cobot:Main:imageList.noAltText')}</i>
+                      </span>
+                    </span>
+            <div class="warning-badge-container" @if={!ImageExtension.hasAltText(image) && image.usageCount > 0}>
+              <div class="warning-badge-message">
+                <i class="fas fa-exclamation"></i>
+                <span>{I18n.translate('Ujamii.Cobot:Main:imageList.noAltTextButImageInUseWarningMessage')}</span>
+              </div>
+              <div class="warning-badge">
+                <i class="fas fa-exclamation"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="asset-image-container-button-list">
+            <button class="neos-button neos-button-secondary save hidden">
+              {I18n.translate('Ujamii.Cobot:Main:imageList.saveButtonText')}
+            </button>
+            <Neos.Fusion:Link.Action href.action="generate"
+                                     href.arguments={{image: props.image}}
+                                     renderer.attributes.class="generate neos-button neos-button-secondary">
+              {I18n.translate('Ujamii.Cobot:Main:imageList.generateButtonText')}
+            </Neos.Fusion:Link.Action>
+            <button class="edit neos-button neos-button-secondary" type="button">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </div>
+        </div>
+      </Neos.Fusion.Form:Form>
+    </li>
+  `
+}
