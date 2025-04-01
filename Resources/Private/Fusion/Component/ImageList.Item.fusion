@@ -5,7 +5,7 @@ prototype(Ujamii.Cobot:Component.ImageList.Item) < prototype(Neos.Fusion:Compone
   renderer = afx`
     <li class="asset-list-item">
       <div class="asset-image-container">
-        <Neos.Neos:ImageTag asset={props.image}/>
+        <Neos.Neos:ImageTag asset={props.image} width={800}/>
       </div>
 
       <Neos.Fusion.Form:Form form.target.action="change"

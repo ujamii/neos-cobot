@@ -11,6 +11,8 @@ Ujamii:
         image:
           flux: image/flux
           ideogram: image/ideogram
+        alt-text:
+          openai: alt-text/openai
     ImageEditorExtension:
       enabled: true
 

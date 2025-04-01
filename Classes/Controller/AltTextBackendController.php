@@ -102,7 +102,7 @@ class AltTextBackendController extends ActionController
         $base64 = base64_encode(stream_get_contents($thumbnail->getResource()->getStream()));
         $base64 = 'data:'.$image->getResource()->getMediaType().';base64,'.$base64;
 
-        $uri = $this->settings['services']['baseUri'].$this->settings['services']['routes']['altText']['path'];
+        $uri = $this->settings['services']['baseUri'].'/api/v1/'.$this->settings['services']['useCases']['alt-text']['openai'];
         $accessToken = $this->settings['services']['apiKey'];
         try {
             $response = $this->browser->request(
