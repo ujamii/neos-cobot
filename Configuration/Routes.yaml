@@ -1,7 +1,22 @@
--
-  name: Image
+- name: Image
   uriPattern: api/image
   defaults:
     '@package': 'Ujamii.Cobot'
     '@controller': 'Image'
     '@action': 'upload'
+
+- name: User Settings
+  uriPattern: api/user-settings
+  defaults:
+    '@package': 'Ujamii.Cobot'
+    '@controller': 'UserSettings'
+    '@action': 'get'
+  httpMethods: [ 'GET' ]
+
+- name: User Settings
+  uriPattern: api/user-settings
+  defaults:
+    '@package': 'Ujamii.Cobot'
+    '@controller': 'UserSettings'
+    '@action': 'update'
+  httpMethods: [ 'POST' ]

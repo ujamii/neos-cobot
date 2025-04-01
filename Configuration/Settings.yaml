@@ -3,18 +3,14 @@ Ujamii:
     services:
       baseUri: https://cobot.ujamii.com
       apiKey: null
-      routes:
-        altText:
-          path: /api/v1/alt-text/openai
-        chatGPT:
-          path: /api/v1/text/openai
-        dallE:
-          path: /api/v1/image/openai
-          dev: false
-        flux:
-          path: /api/v1/image/flux
-        ideogram:
-          path: /api/v1/image/ideogram
+      modelEndpoint: model/v1
+      useCases:
+        text:
+          openai: text/openai
+          anthropic:  text/anthropic
+        image:
+          flux: image/flux
+          ideogram: image/ideogram
     ImageEditorExtension:
       enabled: true
 
@@ -51,7 +47,15 @@ Neos:
             events:
               - preRemove
             listener: Ujamii\Cobot\EventListener\MediaRemoveListener
+    security:
+      authentication:
+        providers:
+          'Neos.Neos:Backend':
+            requestPatterns:
+              'Ujamii.Cobot:Controller':
+                pattern: ControllerObjectName
+                patternOptions:
+                  controllerObjectNamePattern: 'Ujamii\Cobot\Controller\.*'
     mvc:
       routes:
-        'Ujamii.Cobot':
-          position: 'start'
+        'Ujamii.Cobot': true

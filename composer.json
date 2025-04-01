@@ -3,8 +3,8 @@
     "type": "neos-package",
     "name": "ujamii/neos-cobot",
     "require": {
-        "php": ">=8.3",
-        "neos/neos": "^8.3"
+        "neos/neos": "^8.3",
+        "neos/flow": "^8.3"
     },
     "autoload": {
         "psr-4": {
@@ -20,5 +20,9 @@
         "allow-plugins": {
             "neos/composer-plugin": true
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.67",
+        "phpstan/phpstan": "^2.1"
     }
 }
