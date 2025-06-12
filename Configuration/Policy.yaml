@@ -7,14 +7,11 @@ privilegeTargets:
     'Ujamii.Cobot:UserSettingsController':
       matcher: 'method(Ujamii\Cobot\Controller\UserSettingsController->(get|update)Action())'
 roles:
-  'Neos.Flow:Everybody':
-    privileges:
-      - privilegeTarget: 'Ujamii.Cobot:ImageController'
-        permission: GRANT
-
   'Neos.Neos:Editor':
     privileges:
       - privilegeTarget: 'Ujamii.Cobot.AltTextBackendController'
         permission: GRANT
       - privilegeTarget: 'Ujamii.Cobot:UserSettingsController'
+        permission: GRANT
+      - privilegeTarget: 'Ujamii.Cobot:ImageController'
         permission: GRANT

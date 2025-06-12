@@ -10,7 +10,6 @@ use Neos\Flow\Mvc\View\JsonView;
 use Neos\Flow\Persistence\Exception\IllegalObjectTypeException;
 use Neos\Flow\ResourceManagement\Exception as ResourceManagementException;
 use Neos\Flow\ResourceManagement\ResourceManager;
-use Neos\Flow\Security\Context as SecurityContext;
 use Neos\Media\Domain\Model\AssetCollection;
 use Neos\Media\Domain\Model\Image;
 use Neos\Media\Domain\Repository\AssetCollectionRepository;
@@ -23,7 +22,6 @@ class ImageController extends ActionController
     public $viewObjectNamePattern = JsonView::class;
 
     public function __construct(
-        private readonly SecurityContext $securityContext,
         private readonly Browser $browser,
         private readonly ImageRepository $imageRepository,
         private readonly ResourceManager $resourceManager,
@@ -36,17 +34,15 @@ class ImageController extends ActionController
      */
     public function uploadAction(): void
     {
-        $this->securityContext->withoutAuthorizationChecks(function () {
-            /** @var array<string, string> $content */
-            $content = $this->request->getHttpRequest()->getParsedBody();
-            $imageUri = $content['imageUri'];
+        /** @var array<string, string> $content */
+        $content = $this->request->getHttpRequest()->getParsedBody();
+        $imageUri = $content['imageUri'];
 
-            $image = $this->importImage($imageUri);
+        $image = $this->importImage($imageUri);
 
-            $this->view->assign('value', ['image' => $image->getIdentifier()]);
+        $this->view->assign('value', ['image' => $image->getIdentifier()]);
 
-            $this->logger->info(__CLASS__.'::'.__FUNCTION__.': '.$imageUri);
-        });
+        $this->logger->info(__CLASS__.'::'.__FUNCTION__.': '.$imageUri);
     }
 
     /**
